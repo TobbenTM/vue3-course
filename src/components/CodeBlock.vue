@@ -43,7 +43,7 @@ onMounted(async () => {
     lineWrapping: true,
     lineNumbers: true,
     viewportMargin: Infinity,
-    scrollbarStyle: null,
+    scrollbarStyle: undefined,
   })
 })
 </script>
