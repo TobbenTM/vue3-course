@@ -4,7 +4,7 @@
     <p v-if="loading">Loading data...</p>
     <p v-else-if="error">{{ error }}</p>
     <p v-else-if="!data">No data to show!</p>
-    <p v-else>{{ data | formatFact }}</p>
+    <p v-else>{{ formatFact(data) }}</p>
   </div>
 </template>
 
@@ -46,8 +46,6 @@ export default {
         this.loading = false;
       }
     },
-  },
-  filters: {
     formatFact(fact) {
       if (!fact) return 'No facts are needed about Chuck';
       return fact.value;

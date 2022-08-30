@@ -1,11 +1,17 @@
 <template>
   <div class="component">
     <!-- We can easily bind event handlers -->
-    <button v-on:click="onButtonClicked">Push me!</button><br/>
-    <button @click="onButtonClicked">Push me!</button><br/>
+    <button v-on:click="onButtonClicked">
+      Push me!
+    </button><br/>
+    <button @click="onButtonClicked">
+      Push me!
+    </button><br/>
 
     <!-- Also with modifiers! -->
-    <button v-on:click.prevent="onButtonClicked">Push me!</button>
+    <button v-on:click.prevent="onButtonClicked">
+      Push me!
+    </button>
   </div>
 </template>
 

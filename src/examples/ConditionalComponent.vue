@@ -5,10 +5,10 @@
     <p v-else-if="showError">Oops, something went wrong!</p>
     <p v-else>What the heck happened!?</p>
 
-    <!-- Et alternativ til v-if er v-show -->
+    <!-- Alternatively we can use v-show -->
     <p v-show="false">This exists, but is hidden</p>
 
-    <button v-on:click="showMessage = false">Remove message</button> | 
+    <button v-on:click="showMessage = false">Remove message</button> |
     <button v-on:click="showError = false">Remove error</button>
   </div>
 </template>

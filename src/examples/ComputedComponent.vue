@@ -1,21 +1,16 @@
+<script setup>
+import { computed, ref } from 'vue';
+
+const rawValue = ref(3)
+const computedValue = computed(() =>
+  rawValue.value * rawValue.value)
+</script>
+
 <template>
   <div class="component">
     {{ rawValue }} | {{ computedValue }} <br/>
-    <button v-on:click="rawValue += 1">Level up!</button>
+    <button @click="rawValue += 1">
+      Level up!
+    </button>
   </div>
 </template>
-
-<script>
-export default {
-  computed: {
-    computedValue() {
-      return this.rawValue * this.rawValue;
-    },
-  },
-  data() {
-    return {
-      rawValue: 3,
-    };
-  },
-};
-</script>

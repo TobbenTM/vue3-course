@@ -1,8 +1,12 @@
 <template>
   <div class="component">
-    <!-- We can run data through filters -->
+    <!-- We can run data through filters (old way) -->
     {{ currentDate | formatDate }} <br/>
-    {{ currentDate | formatDate | capitalize }}
+    {{ currentDate | formatDate | capitalize }} <br/>
+
+    <!-- Less magic enforced now: -->
+    {{ currentDate.toDateString() }} <br/>
+    {{ currentDate.toDateString().toUpperCase() }}
   </div>
 </template>
 

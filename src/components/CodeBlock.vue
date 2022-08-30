@@ -23,7 +23,7 @@ const editorEl = ref<HTMLElement | null>(null);
 
 const filteredCode = computed(() => {
   if (scriptOnly) {
-    const matches = /<script>((?:.|\n|\r)*)<\/script>/gm.exec(code);
+    const matches = /<script(?: setup)?(?: lang="ts")?>((?:.|\n|\r)*)<\/script>/gm.exec(code);
     return matches ? matches[1].trim() : code;
   }
   if (templateOnly) {

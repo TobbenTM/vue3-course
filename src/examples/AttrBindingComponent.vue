@@ -1,3 +1,9 @@
+<script setup>
+import { ref } from 'vue';
+
+const url = ref('https://tobbentm.com')
+</script>
+
 <template>
   <div class="component">
     <!-- We can also bind attributes -->
@@ -5,13 +11,3 @@
     <a :href="url">Link to {{ url }}</a>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      url: 'http://tobbentm.com',
-    };
-  },
-};
-</script>

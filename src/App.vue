@@ -27,8 +27,6 @@ import ComputedComponentExample from "./examples/ComputedComponent.vue?raw";
 import LifecycleComponent from "./examples/LifecycleComponent.vue";
 import WatcherComponent from "./examples/WatcherComponent.vue";
 import WatcherComponentExample from "./examples/WatcherComponent.vue?raw";
-import StoreExample from "./examples/store.js?raw";
-import VuexComponentExample from "./examples/VuexComponent.vue?raw";
 import FilterComponent from "./examples/FilterComponent.vue";
 import FilterComponentExample from "./examples/FilterComponent.vue?raw";
 import RegistrationExample from "./examples/RegistrationExample.js?raw";
@@ -100,6 +98,7 @@ const progress = ref(0);
               <ul>
                 <li>Can be use in small apps to replace jQuery</li>
                 <li>Or in big Single Page Applications!</li>
+                <li>Using frameworks with Nuxt we get SSR &amp; SSG too</li>
               </ul>
             </li>
             <li>
@@ -117,7 +116,7 @@ const progress = ref(0);
                 </li>
               </ul>
             </li>
-            <li>Straight forward documentation</li>
+            <li>Straight forward <a href="https://vuejs.org/guide/introduction.html" target="_blank">documentation</a></li>
             <li>Opinionated</li>
           </ul>
         </div>
@@ -226,32 +225,60 @@ const progress = ref(0);
       </app-slide>
 
       <app-slide>
-        <h1>The Vue object (Options API)</h1>
-        <code-block
-          :code="`export default {
-    name: 'ComponentName',
-    props: {}, // properties
-    data() {}, // reactive data
-    computed: {}, // computed data
-    components: {}, // other components used
-    watch: {}, // observe reactive data
-    methods: {}, // methods
-    
-    // lifecycle handlers
-    beforeCreate() {},
-    created() {},
-    beforeMount() {},
-    mounted() {},
-    beforeUpdate() {},
-    updated() {},
-    activated() {},
-    deactivated() {},
-    beforeUnmount() {},
-    unmounted() {},
-    errorCaptured() {},
-  };`"
-          lang="text/javascript"
-        />
+        <h1>The Vue object (Options API) vs Composition API</h1>
+        <div class="half">
+          <code-block
+            :code="`export default {
+  name: 'ComponentName',
+  props: {}, // properties
+  data() {}, // reactive data
+  computed: {}, // computed data
+  components: {}, // other components used
+  watch: {}, // observe reactive data
+  methods: {}, // methods
+  
+  // lifecycle handlers
+  beforeCreate() {},
+  created() {},
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
+  activated() {},
+  deactivated() {},
+  beforeUnmount() {},
+  unmounted() {},
+  errorCaptured() {},
+};`"
+            lang="text/javascript"
+          />
+        </div>
+        <div class="half">
+          <code-block
+            :code="`<script setup>
+// Name cannot be set using composition API
+const props = defineProps()
+const data = reactive({})
+const computed = computed(() => ..)
+import Component from './Component.vue'
+watch(data, async (newData, oldData) => ..)
+async function method() {}
+
+// lifecycle handlers
+onBeforeCreate(() => {})
+onCreated(() => {})
+onBeforeMount(() => {})
+onMounted(() => {})
+onBeforeUpdate(() => {})
+onUpdated(() => {})
+onActivated(() => {})
+onDeactivated(() => {})
+onBeforeUnmount(() => {})
+onUnmounted(() => {})
+onErrorCaptured(() => {})
+</script>`"
+          />
+        </div>
       </app-slide>
 
       <app-slide>
@@ -335,11 +362,16 @@ const progress = ref(0);
             :script-only="true"
           />
           <p>VModelComponent.vue</p>
+          
+          <ul>
+            <li>We can customize the name of the value being bound</li>
+            <li>And also have multiple bindings with different names</li>
+          </ul>
         </div>
       </app-slide>
 
       <app-slide>
-        <h1>Filters</h1>
+        <h1 style="text-decoration: line-through;">Filters</h1>
         <div class="half">
           <code-block :code="FilterComponentExample" lang="text/x-vue" />
           <p>FilterComponent.vue</p>
@@ -436,43 +468,6 @@ const progress = ref(0);
       <app-slide>
         <h1>Routing &amp; state</h1>
         <h2 class="subtitle">For bigger applications</h2>
-        <code-block
-          :code="`vue add router
-  vue add vuex`"
-          lang="text/x-sh"
-        />
-      </app-slide>
-
-      <app-slide>
-        <h1>State with Vuex</h1>
-        <a href="https://vuex.vuejs.org/" target="_blank"
-          ><img src="./assets/vuex_flow.png"
-        /></a>
-      </app-slide>
-
-      <app-slide>
-        <h1>State with Vuex</h1>
-        <a href="https://vuex.vuejs.org/" target="_blank"
-          ><img src="./assets/vuex.png"
-        /></a>
-      </app-slide>
-
-      <app-slide>
-        <h1>State with Vuex</h1>
-        <code-block :code="StoreExample" lang="text/javascript" />
-        <p>store.js</p>
-      </app-slide>
-
-      <app-slide>
-        <h1>State with Vuex</h1>
-        <div class="half">
-          <code-block :code="StoreExample" lang="text/javascript" />
-          <p>store.js</p>
-        </div>
-        <div class="half">
-          <code-block :code="VuexComponentExample" lang="text/x-vue" />
-          <p>VuexComponent.vue</p>
-        </div>
       </app-slide>
 
       <app-slide>

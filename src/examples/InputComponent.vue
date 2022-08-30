@@ -1,3 +1,9 @@
+<script setup>
+import { ref } from 'vue';
+
+const userMessage = ref('')
+</script>
+
 <template>
   <div class="component">
     <input
@@ -10,18 +16,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      userMessage: '',
-    };
-  },
-};
-</script>
-
 <style scoped>
-.component input {
+input {
   line-height: 2em;
   padding: .5em;
 }
