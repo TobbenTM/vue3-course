@@ -12,11 +12,13 @@ const {
   lang = "text/x-vue",
   scriptOnly = false,
   templateOnly = false,
+  stripStyle = false,
 } = defineProps<{
   code: string;
   lang?: string;
   scriptOnly?: boolean;
   templateOnly?: boolean;
+  stripStyle?: boolean;
 }>();
 
 const editorEl = ref<HTMLElement | null>(null);
@@ -29,6 +31,9 @@ const filteredCode = computed(() => {
   if (templateOnly) {
     const matches = /<template>((?:.|\n|\r)*)<\/template>/gm.exec(code);
     return matches ? matches[1].trim() : code;
+  }
+  if (stripStyle) {
+    return code.replace(/<style(?: scoped)?>[^<]*<\/style>/gm, '').trim();
   }
   return code;
 });

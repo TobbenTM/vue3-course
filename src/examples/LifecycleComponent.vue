@@ -39,7 +39,7 @@ export default {
       try {
         var result = await axios.get('https://api.chucknorris.io/jokes/random');
         this.data = result.data;
-        await sleep(5000);
+        await sleep(3000);
         this.loading = false;
       } catch (err) {
         this.error = err;

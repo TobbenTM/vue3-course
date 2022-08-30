@@ -12,7 +12,9 @@
     "@codemirror/lang-javascript": "^6.0.2",
     "axios": "^0.27.2",
     "codemirror": "5",
-    "vue": "^3.2.37"
+    "pinia": "^2.0.21",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@types/codemirror": "^5.60.5",

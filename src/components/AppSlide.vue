@@ -55,11 +55,6 @@
       }
     }
 
-    .half {
-      max-width: 40%;
-      margin: .5em;
-    }
-
     .component {
       margin: 1em;
       padding: 1em;
@@ -70,12 +65,26 @@
       text-overflow: ellipsis;
     }
 
+    .half {
+      max-width: 40%;
+      margin: .5em;
+    }
+
+    .one-third {
+      max-width: 25%;
+      margin: .5em;
+    }
+    .two-thirds {
+      max-width: 55%;
+      margin: .5em;
+    }
+
     img {
       max-width: 80%;
       max-height: 90%;
       padding: 2em;
     }
-    
+
     ul {
       text-align: left;
       display: block;

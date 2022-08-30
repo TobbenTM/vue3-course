@@ -34,6 +34,12 @@ import VModelUsageComponent from "./examples/VModelUsageComponent.vue";
 import VModelComponentExample from "./examples/VModelComponent.vue?raw";
 import DirectiveComponent from "./examples/DirectiveComponent.vue";
 import DirectiveComponentExample from "./examples/DirectiveComponent.vue?raw";
+import RouterExample from "./examples/router.js?raw";
+import RouterComponent from "./examples/RouterComponent.vue";
+import RouterComponentExample from "./examples/RouterComponent.vue?raw";
+import StoreExample from "./examples/store.ts?raw";
+import PiniaComponent from "./examples/PiniaComponent.vue";
+import PiniaComponentExample from "./examples/PiniaComponent.vue?raw";
 
 const progress = ref(0);
 </script>
@@ -217,11 +223,11 @@ const progress = ref(0);
 
       <app-slide>
         <h1>Event handling</h1>
-        <div class="half">
+        <div class="two-thirds">
           <code-block :code="EventComponentExample" lang="text/x-vue" />
           <p>EventComponent.vue</p>
         </div>
-        <event-component class="half" />
+        <event-component class="one-third" />
       </app-slide>
 
       <app-slide>
@@ -236,7 +242,7 @@ const progress = ref(0);
   components: {}, // other components used
   watch: {}, // observe reactive data
   methods: {}, // methods
-  
+
   // lifecycle handlers
   beforeCreate() {},
   created() {},
@@ -259,9 +265,9 @@ const progress = ref(0);
 // Name cannot be set using composition API
 const props = defineProps()
 const data = reactive({})
-const computed = computed(() => ..)
+const computed = computed(() => 123)
 import Component from './Component.vue'
-watch(data, async (newData, oldData) => ..)
+watch(data, async (newData, oldData) => {})
 async function method() {}
 
 // lifecycle handlers
@@ -283,7 +289,7 @@ onErrorCaptured(() => {})
 
       <app-slide>
         <h1>Conditional Rendering</h1>
-        <div class="half">
+        <div class="two-thirds">
           <code-block
             :code="ConditionalComponentExample"
             lang="text/x-vue"
@@ -291,7 +297,7 @@ onErrorCaptured(() => {})
           />
           <p>ConditionalComponent.vue</p>
         </div>
-        <conditional-component class="half" />
+        <conditional-component class="one-third" />
       </app-slide>
 
       <app-slide>
@@ -362,7 +368,7 @@ onErrorCaptured(() => {})
             :script-only="true"
           />
           <p>VModelComponent.vue</p>
-          
+
           <ul>
             <li>We can customize the name of the value being bound</li>
             <li>And also have multiple bindings with different names</li>
@@ -405,38 +411,67 @@ onErrorCaptured(() => {})
           <directive-component />
         </div>
         <div class="half">
-          <code-block :code="DirectiveComponentExample" lang="text/x-vue" />
+          <code-block :code="DirectiveComponentExample" strip-style lang="text/x-vue" />
           <p>DirectiveComponent.vue</p>
         </div>
       </app-slide>
 
       <app-slide>
-        <h1>The Vue object</h1>
-        <code-block
-          :code="`export default {
-    name: 'ComponentName', // ✔️
-    props: {}, // properties ✔️
-    data() {}, // reactive data ✔️
-    computed: {}, // computed data ✔️
-    components: {}, // other components used ✔️
-    watch: {}, // observe reactive data ✔️
-    methods: {}, // methods ✔️
-    
-    // lifecycle handlers
-    beforeCreate() {},
-    created() {},
-    beforeMount() {},
-    mounted() {},
-    beforeUpdate() {},
-    updated() {},
-    activated() {},
-    deactivated() {},
-    beforeDestroy() {},
-    destroyed() {},
-    errorCaptured() {},
-  };`"
-          lang="text/javascript"
-        />
+        <h1>The Vue object | composition API</h1>
+        <div class="half">
+
+          <code-block
+            :code="`export default {
+  name: 'ComponentName', // ✔️
+  props: {}, // properties ✔️
+  data() {}, // reactive data ✔️
+  computed: {}, // computed data ✔️
+  components: {}, // other components used ✔️
+  watch: {}, // observe reactive data ✔️
+  methods: {}, // methods ✔️
+
+  // lifecycle handlers
+  beforeCreate() {},
+  created() {},
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
+  activated() {},
+  deactivated() {},
+  beforeDestroy() {},
+  destroyed() {},
+  errorCaptured() {},
+};`"
+            lang="text/javascript"
+          />
+        </div>
+        <div class="half">
+          <code-block
+            :code="`<script setup>
+// Name cannot be set using composition API
+const props = defineProps() ✔️
+const data = reactive({}) ✔️
+const computed = computed(() => 123) ✔️
+import Component from './Component.vue' ✔️
+watch(data, async (newData, oldData) => {}) ✔️
+async function method() {} ✔️
+
+// lifecycle handlers
+onBeforeCreate(() => {})
+onCreated(() => {})
+onBeforeMount(() => {})
+onMounted(() => {})
+onBeforeUpdate(() => {})
+onUpdated(() => {})
+onActivated(() => {})
+onDeactivated(() => {})
+onBeforeUnmount(() => {})
+onUnmounted(() => {})
+onErrorCaptured(() => {})
+</script>`"
+          />
+        </div>
       </app-slide>
 
       <app-slide>
@@ -462,12 +497,52 @@ onErrorCaptured(() => {})
           <li>Can be used for loading data whenever shown</li>
           <li>Can be used for cleaning up resources when no longer needed</li>
         </ul>
-        <lifecycle-component />
+        <lifecycle-component class="half" />
       </app-slide>
 
       <app-slide>
         <h1>Routing &amp; state</h1>
         <h2 class="subtitle">For bigger applications</h2>
+      </app-slide>
+
+      <app-slide>
+        <img src="./assets/logo.png" />
+        <h1>Vue Router</h1>
+        <h2 class="subtitle">The recommended routing provider</h2>
+        <a target="_blank" href="https://router.vuejs.org/">router.vuejs.org</a>
+      </app-slide>
+
+      <app-slide>
+        <h1>Vue Router</h1>
+        <div class="half">
+          <code-block :code="RouterExample" lang="text/javascript" />
+          <p>router.js</p>
+        </div>
+        <div class="half">
+          <code-block :code="RouterComponentExample" template-only lang="text/x-vue" />
+          <p>RouterComponent.vue</p>
+          <router-component />
+        </div>
+      </app-slide>
+
+      <app-slide>
+        <h1>🍍 Pinia</h1>
+        <h2 class="subtitle">The recommended state provider</h2>
+        <a target="_blank" href="https://pinia.vuejs.org/">pinia.vuejs.org</a>
+      </app-slide>
+
+      <app-slide>
+        <h1>🍍 Pinia</h1>
+        <div class="half">
+          <code-block :code="StoreExample" lang="text/typescript" />
+          <p>store.ts</p>
+          <pinia-component />
+        </div>
+        <div class="half">
+          <code-block :code="PiniaComponentExample" lang="text/x-vue" />
+          <p>PiniaComponent.vue</p>
+          <pinia-component />
+        </div>
       </app-slide>
 
       <app-slide>
