@@ -19,7 +19,7 @@ const {
   templateOnly?: boolean;
 }>();
 
-const editorEl = ref<HTMLElement | null>(null)
+const editorEl = ref<HTMLElement | null>(null);
 
 const filteredCode = computed(() => {
   if (scriptOnly) {
@@ -36,25 +36,20 @@ const filteredCode = computed(() => {
 onMounted(async () => {
   CodeMirror(editorEl.value!, {
     value: filteredCode.value,
-    theme: 'material',
+    theme: "material",
     mode: lang,
     readOnly: false,
     tabSize: 2,
     lineWrapping: true,
     lineNumbers: true,
     viewportMargin: Infinity,
-    scrollbarStyle: undefined,
-  })
-})
+  });
+});
 </script>
 
 <template>
   <div class="code-block">
-    <div
-      @keyup.stop
-      class="code-block__mirror"
-      ref="editorEl"
-    />
+    <div @keyup.stop class="code-block__mirror" ref="editorEl" />
   </div>
 </template>
 
