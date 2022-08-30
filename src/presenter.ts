@@ -3,7 +3,7 @@ import { h, defineComponent, Transition, KeepAlive } from "vue";
 export default defineComponent({
   name: "Presenter",
   render: function () {
-    return h(Transition, { attrs: { name: this.transition } }, [
+    return h(Transition, { name: this.transition || undefined }, () => [
       // h(KeepAlive, { key: this.currentSlide.key?.toString() + '-ka' }, [this.currentSlide]),
       this.currentSlide
     ]);
