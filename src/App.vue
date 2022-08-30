@@ -22,6 +22,8 @@ import ConditionalComponent from "./examples/ConditionalComponent.vue";
 import ConditionalComponentExample from "./examples/ConditionalComponent.vue?raw";
 import ListComponent from "./examples/ListComponent.vue";
 import ListComponentExample from "./examples/ListComponent.vue?raw";
+import ReactivityComponent from "./examples/ReactivityComponent.vue";
+import ReactivityComponentExample from "./examples/ReactivityComponent.vue?raw";
 import ComputedComponent from "./examples/ComputedComponent.vue";
 import ComputedComponentExample from "./examples/ComputedComponent.vue?raw";
 import LifecycleComponent from "./examples/LifecycleComponent.vue";
@@ -204,7 +206,16 @@ const progress = ref(0);
       </app-slide>
 
       <app-slide>
-        <h1>Databinding for attributtes</h1>
+        <h1>Reactivity with composition API</h1>
+        <div class="half">
+          <code-block :code="ReactivityComponentExample" lang="text/x-vue" />
+          <p>ReactivityComponent.vue</p>
+        </div>
+        <reactivity-component class="half" />
+      </app-slide>
+
+      <app-slide>
+        <h1>Data binding for attributtes</h1>
         <div class="half">
           <code-block :code="AttrBindingComponentExample" lang="text/x-vue" />
           <p>AttrBindingComponent.vue</p>
@@ -213,7 +224,7 @@ const progress = ref(0);
       </app-slide>
 
       <app-slide>
-        <h1>Databinding with evaluation</h1>
+        <h1>Data binding with evaluation</h1>
         <div class="half">
           <code-block :code="InputComponentExample" lang="text/x-vue" />
           <p>InputComponent.vue</p>
