@@ -29,7 +29,7 @@ const filteredCode = computed(() => {
     return matches ? matches[1].trim() : code;
   }
   if (templateOnly) {
-    const matches = /<template>((?:.|\n|\r)*)<\/template>/gm.exec(code);
+    const matches = /(<template>(?:.|\n|\r)*<\/template>)/gm.exec(code);
     return matches ? matches[1].trim() : code;
   }
   if (stripStyle) {

@@ -4,7 +4,6 @@ export default defineComponent({
   name: "Presenter",
   render: function () {
     return h(Transition, { name: this.transition || undefined }, () => [
-      // h(KeepAlive, { key: this.currentSlide.key?.toString() + '-ka' }, [this.currentSlide]),
       this.currentSlide
     ]);
   },

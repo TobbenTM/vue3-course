@@ -36,6 +36,9 @@ import VModelUsageComponent from "./examples/VModelUsageComponent.vue";
 import VModelComponentExample from "./examples/VModelComponent.vue?raw";
 import DirectiveComponent from "./examples/DirectiveComponent.vue";
 import DirectiveComponentExample from "./examples/DirectiveComponent.vue?raw";
+import SlotComponentExample from "./examples/SlotComponent.vue?raw";
+import SlotUsageComponent from "./examples/SlotUsageComponent.vue";
+import SlotUsageComponentExample from "./examples/SlotUsageComponent.vue?raw";
 import RouterExample from "./examples/router.js?raw";
 import RouterComponent from "./examples/RouterComponent.vue";
 import RouterComponentExample from "./examples/RouterComponent.vue?raw";
@@ -74,6 +77,7 @@ const progress = ref(0);
           <li>Custom inputs</li>
           <li style="text-decoration: line-through">Filters</li>
           <li>Directives</li>
+          <li>Slots</li>
           <li>Lifecycle</li>
           <li>Routing &amp; state</li>
         </ul>
@@ -428,6 +432,24 @@ onErrorCaptured(() => {})
       </app-slide>
 
       <app-slide>
+        <h1>Slots</h1>
+        <div class="half">
+          <ul>
+            <li>Slots can be used to pass children into components</li>
+            <li>We can have multiple named slots for complex wrappers</li>
+            <li>Slots can also take in props from the wrapper!</li>
+          </ul>
+          <code-block :code="SlotComponentExample" template-only lang="text/x-vue" />
+          <p>SlotComponent.vue</p>
+        </div>
+        <div class="half">
+          <code-block :code="SlotUsageComponentExample" template-only lang="text/x-vue" />
+          <p>SlotUsageComponent.vue</p>
+          <slot-usage-component />
+        </div>
+      </app-slide>
+
+      <app-slide>
         <h1>The Vue object | composition API</h1>
         <div class="half">
 
@@ -483,6 +505,25 @@ onErrorCaptured(() => {})
 </script>`"
           />
         </div>
+      </app-slide>
+
+      <app-slide>
+        <h1>Agenda:</h1>
+        <ul>
+          <li>✅ What's Vue.js?</li>
+          <li>✅ Devtools</li>
+          <li>✅ Components</li>
+          <li>✅ Data binding</li>
+          <li>✅ Event handling</li>
+          <li>✅ Computed properties</li>
+          <li>✅ Watchers</li>
+          <li>✅ Custom inputs</li>
+          <li style="text-decoration: line-through">✅ Filters</li>
+          <li>✅ Directives</li>
+          <li>✅ Slots</li>
+          <li>Lifecycle</li>
+          <li>Routing &amp; state</li>
+        </ul>
       </app-slide>
 
       <app-slide>
