@@ -153,11 +153,11 @@ const progress = ref(0);
             </a>
           </li>
           <li>
-            Fast prototyping with
+            Fast scaffolding with
             <span style="text-decoration: line-through">@vue/cli</span> or vite
           </li>
         </ul>
-        <code-block :code="`yarn create vite --template vue-ts`" lang="text/x-sh" />
+        <code-block :code="`npm init vue@3`" lang="text/x-sh" />
       </app-slide>
 
       <app-slide>
@@ -612,7 +612,7 @@ onErrorCaptured(() => {})
           <li>Add the component to App.vue</li>
         </ul>
         <code-block
-          :code="`yarn create vite
+          :code="`npm init vue@3
 yarn
 yarn dev`"
           lang="text/x-sh"
