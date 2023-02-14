@@ -1,0 +1,57 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: vue-course-cert
+  namespace: transit
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: developers@formitable.com
+    privateKeySecretRef:
+      name: vue-course-cert
+    solvers:
+    - http01:
+        ingress:
+          class: traefik
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vue.k8s.test.formitable.com
+  namespace: transit
+spec:
+  secretName: vue.k8s.test.formitable.com
+  issuerRef:
+    name: vue-course-cert
+    kind: ClusterIssuer
+  commonName: vue.k8s.test.formitable.com
+  dnsNames: # We always need the main domain, but we can also add alternate domains to the cert
+  - vue.k8s.test.formitable.com
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vue-course-ingress
+  namespace: transit
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: vue-course-cert
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`vue.k8s.test.formitable.com`)
+      services:
+        - name: vue-course-service
+          namespace: default
+          port: 80
+  tls:
+    secretName: vue.k8s.test.formitable.com
+    domains:
+    - main: vue.k8s.test.formitable.com
