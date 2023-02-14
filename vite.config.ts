@@ -8,5 +8,9 @@ export default defineConfig({
   })],
   define: {
     '__VUE_PROD_DEVTOOLS__': true
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 8080,
   }
 })
