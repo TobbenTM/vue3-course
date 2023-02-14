@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue-course-deployment
+  labels:
+    app: vue-course
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vue-course
+  template:
+    metadata:
+      labels:
+        app: vue-course
+    spec:
+      containers:
+      - name: vue-course
+        image: ftsharedacr.azurecr.io/v3c:latest
+        ports:
+        - containerPort: 8080
